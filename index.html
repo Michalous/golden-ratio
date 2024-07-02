@@ -8,9 +8,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="canvas-container">
+    <div class="canvas-container">
+        <h1>Golden ratio</h1>
         <h2>seed: <span id="iteration">0</span></h2>
         <canvas id="myCanvas" width="600" height="600"></canvas>
+    </div>
+    <div class="canvas-container">
+        <h2>Choose an angle:</h2>
+        <form id="angleForm">
+            <input id="angleInput" type="text" placeholder="e.g. 1.618">
+            <button type="submit">Start</button>
+        </form>
+        <h2>seed: <span id="angleIteration">0</span></h2>
+        <canvas id="angleCanvas" width="600" height="600"></canvas>
     </div>
 </body>
 </html>

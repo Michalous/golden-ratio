@@ -1,4 +1,4 @@
-body, #canvas-container {
+body, .canvas-container {
     background-color: black;
     display: flex;
     flex-direction: column;
