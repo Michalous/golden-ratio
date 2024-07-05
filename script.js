@@ -6,13 +6,16 @@ document.addEventListener('DOMContentLoaded', function() {
     var angleCtx = angleCanvas.getContext('2d')
     var inputValue
     
+    goldenRatio()
+
     document.getElementById('angleForm').addEventListener('submit', function(event) {
         event.preventDefault()
         inputValue = document.getElementById('angleInput').value
         angleFunc(inputValue)
-        console.log(inputValue)
     })
 
+
+    function goldenRatio() {
     var plotX = []
     var plotY = []
     var SIZE = 300
@@ -35,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, i * 100)
         })(i)
     }
+    }
 
     function drawDot(x, y, r) {
         ctx.beginPath()
@@ -54,20 +58,25 @@ document.addEventListener('DOMContentLoaded', function() {
         var plotAngleX = []
         var plotAngleY = []
         var SIZE = 300
-
-        var angleToDraw = angleValue
+       
+        let angle = parseFloat(angleValue)
+        if (isNaN(angle)) {
+            angle = 1.1
+        } 
+        console.log(isNaN(1))
+        var angleToDraw = angle
     
         for (var i = 0; i < SIZE; i++) {
             plotAngleX.push(300 + 450*(Math.cos((2 * Math.PI) * angleToDraw) * i/500))
             plotAngleY.push(300 + 450*(Math.sin((2 * Math.PI) * angleToDraw) * i/500))
         
-            angleToDraw += angleValue
+            angleToDraw += angle
         }
         
         for (var i = 0; i < SIZE; i++) {
             (function(i) {
                 setTimeout(function() {
-                    drawAngleDot(plotX[i], plotY[i], 2)
+                    drawAngleDot(plotAngleX[i], plotAngleY[i], 2)
                     document.getElementById('angleIteration').innerHTML = i + 1
                 }, i * 100)
             })(i)
